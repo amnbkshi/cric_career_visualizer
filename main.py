@@ -58,50 +58,28 @@ ODI_df = html_to_df(ODI_table)
 
 
 
-fig = plt.figure()
-#
-#plt.subplot(3, 2, 1)
-#plt.plot(ODI_df.index,ODI_df['100'], marker='o')
-#
-#plt.subplot(3, 2, 2)
-#plt.plot(test_df.index,test_df['100'], marker='o')
-#
-#plt.subplot(3, 2, 3)
-#plt.plot(ODI_df.index,ODI_df['Avg'], marker='o')
-#
-#plt.subplot(3, 2, 4)
-#plt.plot(test_df.index,test_df['Avg'], marker='o')
-#
-#plt.subplot(3, 2, 5)
-#plt.plot(ODI_df.index,ODI_df['SR'], marker='o')
-#
-#plt.subplot(3, 2, 6)
-#plt.plot(test_df.index,test_df['SR'], marker='o')
+#fig = plt.figure()
+fig, axes = plt.subplots(3, 2, sharex='col', sharey='row', figsize=(6,8))
 
-plt.subplot(3, 2, 1)
-plt.bar(ODI_df.index,ODI_df['100'])
-plt.title('ODI')
-plt.ylabel('Number of 100s')
+axes[0, 0].bar(ODI_df.index,ODI_df['100'], width=0.5)
+axes[0, 0].set_title('ODI', fontsize=16, fontweight="bold")
+axes[0, 0].set_ylabel('Number of 100s', fontsize=10, fontweight="bold")
 
-plt.subplot(3, 2, 2)
-plt.bar(test_df.index,test_df['100'])
-plt.title('Test')
+axes[0, 1].bar(test_df.index,test_df['100'], width=0.5, color='g')
+axes[0, 1].set_title('Test', fontsize=16, fontweight="bold")
 
-plt.subplot(3, 2, 3)
-plt.plot(ODI_df.index,ODI_df['Avg'], marker='o')
-plt.ylabel('Average')
+axes[1, 0].plot(ODI_df.index,ODI_df['Avg'], marker='o')
+axes[1, 0].set_ylabel('Average', fontsize=10, fontweight="bold")
 
-plt.subplot(3, 2, 4)
-plt.plot(test_df.index,test_df['Avg'], marker='o')
+axes[1, 1].plot(test_df.index,test_df['Avg'], marker='o', color='g')
 
-plt.subplot(3, 2, 5)
-plt.plot(ODI_df.index,ODI_df['SR'], marker='o')
-plt.ylabel('Strike Rate')
+axes[2, 0].plot(ODI_df.index,ODI_df['SR'], marker='o')
+axes[2, 0].set_ylabel('Strike Rate', fontsize=10, fontweight="bold")
 
-plt.subplot(3, 2, 6)
-plt.plot(test_df.index,test_df['SR'], marker='o')
+axes[2, 1].plot(test_df.index,test_df['SR'], marker='o', color='g')
 
 
+plt.savefig('sample.png')
 
 
 
