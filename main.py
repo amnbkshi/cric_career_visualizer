@@ -58,12 +58,12 @@ ODI_df = html_to_df(ODI_table)
 
 
 
-#fig = plt.figure()
-fig, axes = plt.subplots(3, 2, sharex='col', sharey='row', figsize=(6,8))
+
+fig, axes = plt.subplots(3, 2, sharex='col', sharey='row', figsize=(7,8))
 
 axes[0, 0].bar(ODI_df.index,ODI_df['100'], width=0.5)
 axes[0, 0].set_title('ODI', fontsize=16, fontweight="bold")
-axes[0, 0].set_ylabel('Number of 100s', fontsize=10, fontweight="bold")
+axes[0, 0].set_ylabel('100s', fontsize=10, fontweight="bold")
 
 axes[0, 1].bar(test_df.index,test_df['100'], width=0.5, color='g')
 axes[0, 1].set_title('Test', fontsize=16, fontweight="bold")
@@ -75,11 +75,19 @@ axes[1, 1].plot(test_df.index,test_df['Avg'], marker='o', color='g')
 
 axes[2, 0].plot(ODI_df.index,ODI_df['SR'], marker='o')
 axes[2, 0].set_ylabel('Strike Rate', fontsize=10, fontweight="bold")
-
+axes[2, 0].set_ylim([40, 120])
+for tick in axes[2, 0].get_xticklabels():
+    tick.set_rotation(45)
+    
 axes[2, 1].plot(test_df.index,test_df['SR'], marker='o', color='g')
+for tick in axes[2, 1].get_xticklabels():
+    tick.set_rotation(45)
+    
+fig.suptitle('Kohli Career Summary', fontsize=16, fontweight="bold")
 
 
 plt.savefig('sample.png')
+
 
 
 
